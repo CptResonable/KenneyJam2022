@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
-        moveVector = Vector3.Lerp(moveVector, player.input.inputVector, acceleration * Time.deltaTime);
+        transform.localRotation = Quaternion.Euler(0, player.input.yaw, 0);
+        moveVector = Vector3.Lerp(moveVector, transform.TransformVector(player.input.inputVector), acceleration * Time.deltaTime);
         characterController.Move(moveVector * movementSpeed * Time.deltaTime);
         //characterController.SimpleMove(moveVector * movementSpeed);
         //characterController.Move(moveVector * movementSpeed);

@@ -13,5 +13,6 @@ public class CameraController : MonoBehaviour {
 
     private void Update() {
         tCameraBase.position = Vector3.Lerp(tCameraBase.position, player.transform.position, Time.deltaTime * 8);
+        tCameraBase.localRotation = Quaternion.Euler(45, player.input.yaw, 0);
     }
 }

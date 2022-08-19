@@ -6,6 +6,9 @@ public class PlayerInput : MonoBehaviour {
 
     public Vector3 inputVector;
 
+    public float yaw;
+    public float pitch;
+
     private void Update() {
         Vector3 newInputVector = Vector3.zero;
 
@@ -20,5 +23,7 @@ public class PlayerInput : MonoBehaviour {
 
         newInputVector.Normalize();
         inputVector = newInputVector;
+
+        yaw += Input.GetAxis("Mouse X") * Settings.mouseSenstivity;        
     }
 }
