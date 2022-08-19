@@ -41,8 +41,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7224803951318166949}
-  - component: {fileID: 4012374660705165431}
   - component: {fileID: 5711668467646231100}
+  - component: {fileID: 7147166302155294648}
   - component: {fileID: 5415083785861351229}
   - component: {fileID: 6353747352648465788}
   - component: {fileID: 1788352082209401425}
@@ -69,24 +69,6 @@ Transform:
   m_Father: {fileID: 6323894944458304810}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &4012374660705165431
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7412746898530881852}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.7
-  m_Radius: 0.25
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!114 &5711668467646231100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +84,24 @@ MonoBehaviour:
   input: {fileID: 0}
   playerMovement: {fileID: 0}
   cameraController: {fileID: 0}
+--- !u!143 &7147166302155294648
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7412746898530881852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5415083785861351229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputVector: {x: 0, y: 0, z: 0}
+  yaw: 0
+  pitch: 0
 --- !u!114 &6353747352648465788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 8
+  jumptSpeed: 0
+  acceleration: 10
+  isGrounded: 0
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &1788352082209401425
 MonoBehaviour:
   m_ObjectHideFlags: 0
