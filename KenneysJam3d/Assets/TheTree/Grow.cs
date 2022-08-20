@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Grow : MonoBehaviour
@@ -12,15 +9,13 @@ public class Grow : MonoBehaviour
     private float duration = 5f;
     private float elapsedTime;
 
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         GrowTree(gameObject);
     }
@@ -48,7 +43,7 @@ public class Grow : MonoBehaviour
                 startScale = endScale;
                 endScale *= 10;
                 elapsedTime = 0;
-                hasGrown=false;
+                hasGrown = false;
                 Addbranches();
             }
         }
