@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float jumptSpeed;
     [SerializeField] private float acceleration;
     [SerializeField] private bool isGrounded;
     [SerializeField] private Vector3 velocity;
 
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 8.0f;
     private float jumpHeight = 1.0f;
-    private float gravityValue = -9.81f;
+    private float gravityValue = -16;// -9.81f;
 
     private CharacterController characterController;
     private Player player;
@@ -30,27 +28,6 @@ public class PlayerMovement : MonoBehaviour {
     public void Initialize(Player player) {
         this.player = player;
     }
-
-    //private void Update() {
-    //    return;
-
-    //    // Set rotation
-    //    transform.localRotation = Quaternion.Euler(0, player.input.yaw, 0);
-
-    //    // Gravity
-    //    float velocityY = characterController.velocity.y;
-    //    velocityY -= 9.81f * Time.deltaTime;
-
-    //    if (characterController.isGrounded && Input.GetKeyDown(KeyCode.Space))
-    //        velocityY = jumptSpeed;
-
-    //    moveVector = Vector3.Lerp(moveVector, transform.TransformVector(player.input.inputVector), acceleration * Time.deltaTime); // Lerp towards target direction
-
-    //    // Move
-    //    characterController.Move((moveVector * movementSpeed + Vector3.up * velocityY) * Time.deltaTime);
-
-    //    isGrounded = characterController.isGrounded;
-    //}
 
     void Update() {
 
