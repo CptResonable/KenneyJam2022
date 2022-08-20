@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour {
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float acceleration;
     [SerializeField] private float stopDuration;
     [SerializeField] private Transform[] tArgetPositions;
     [SerializeField] private AnimationCurve distanceToSpeed;
@@ -14,7 +13,7 @@ public class MovingPlatform : MonoBehaviour {
     private float travelDistance;
     private float distanceTraveled;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
 
     private void Awake() {
@@ -23,6 +22,8 @@ public class MovingPlatform : MonoBehaviour {
     }
 
     private IEnumerator MoveToNextTarget() {
+        yield return new WaitForSeconds(stopDuration);
+
         fromIndex = targetIndex;
         targetIndex = (fromIndex + 1) % tArgetPositions.Length;
         travelDistance = Vector3.Distance(tArgetPositions[fromIndex].position, tArgetPositions[targetIndex].position);
@@ -32,17 +33,13 @@ public class MovingPlatform : MonoBehaviour {
 
         while (travelDistance - distanceTraveled > 0.05f) {
             distanceTraveled = Vector3.Distance(tArgetPositions[fromIndex].position, transform.position);
-            //rb.velocity = travelVector * moveSpeed;
-            //transform.Translate(travelVector * moveSpeed * Time.deltaTime);
             yield return new WaitForFixedUpdate();
-            rb.MovePosition(transform.position + travelVector * moveSpeed * Time.deltaTime);
+
+            float speedMod = distanceToSpeed.Evaluate(distanceTraveled / travelDistance);
+            rb.MovePosition(transform.position + travelVector * moveSpeed * speedMod * Time.deltaTime);     
         }
 
         TargetReached();
-    }
-
-    private void FixedUpdate() {
-        
     }
 
     private void TargetReached() {

@@ -335,8 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  acceleration: 0
-  stopDuration: 0
+  stopDuration: 1
   tArgetPositions:
   - {fileID: 1481761969909103656}
   - {fileID: 1481761970034006739}
@@ -344,7 +343,43 @@ MonoBehaviour:
   - {fileID: 1481761970810527975}
   distanceToSpeed:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.1
+      inSlope: 13.855325
+      outSlope: 13.855325
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08102633
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: -0.0013428017
+      outSlope: -0.0013428017
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.22116457
+    - serializedVersion: 3
+      time: 0.9
+      value: 1
+      inSlope: -0.00012954212
+      outSlope: -0.00012954212
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1477723
+      outWeight: 0.6395636
+    - serializedVersion: 3
+      time: 1
+      value: 0.1
+      inSlope: -20.414228
+      outSlope: -20.414228
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0607699
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
