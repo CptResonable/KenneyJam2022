@@ -24,6 +24,8 @@ public class PlayerInput : MonoBehaviour {
         newInputVector.Normalize();
         inputVector = newInputVector;
 
-        yaw += Input.GetAxis("Mouse X") * Settings.mouseSenstivity;        
+        yaw += Input.GetAxis("Mouse X") * Settings.mouseSenstivity;
+        pitch -= Input.GetAxis("Mouse Y") * Settings.mouseSenstivity;
+        pitch = Mathf.Clamp(pitch, -89f, 89f);
     }
 }
