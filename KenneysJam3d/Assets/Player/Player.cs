@@ -7,6 +7,12 @@ public class Player : MonoBehaviour {
     public PlayerMovement playerMovement;
     public CameraController cameraController;
 
+    //[SerializeField] private Pot pot;
+    [SerializeField] private Transform tCarryPoint;
+    [SerializeField] private Transform tBowBone;
+    [SerializeField] private AnimationCurve bowCurve;
+    private bool carryingPot = false;
+
     private void Awake() {
         input = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -14,5 +20,32 @@ public class Player : MonoBehaviour {
 
         playerMovement.Initialize(this);
         cameraController.Initialize(this);
+    }
+
+    private void Update() {
+        if (!carryingPot) {
+            if (Vector3.Distance(transform.position, Pot.instance.transform.position) < 2) {
+                if (Input.GetKeyDown(KeyCode.E)) {
+                    Pot.instance.transform.parent = tCarryPoint;
+                    Pot.instance.transform.localPosition = Vector3.zero;
+                    carryingPot = true;
+                }
+            }
+        }
+        else {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                StartCoroutine(BowCorutine());
+            }
+        }
+    }
+
+    private IEnumerator BowCorutine() {
+        float f = 0;
+
+        while (f < 1) {
+            f += Time.deltaTime;
+            tBowBone.localRotation = Quaternion.Euler(0, 80 * bowCurve.Evaluate(f), 0);
+            yield return null;
+        }
     }
 }
