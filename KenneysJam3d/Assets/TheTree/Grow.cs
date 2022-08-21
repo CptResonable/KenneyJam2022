@@ -2,39 +2,37 @@ using UnityEngine;
 
 public class Grow : MonoBehaviour
 {
-    public bool hasGrown = false;
-
+    [SerializeField]
+    public bool isGrowing = false;
+    [SerializeField]
+    private Vector3 startScale = new Vector3(0, 0, 0);
+    [SerializeField]
     private Vector3 endScale = new Vector3(10, 10, 10);
-    private Vector3 startScale;
-    private float duration = 5f;
+
+    //Används för att medela trädet att växtfasen
+    //är klar och trädet kan spawna grenarna
+    public delegate void DoneGrowing();
+    public DoneGrowing doneGrowing;
+
+    private float duration = 2f;
     private float elapsedTime;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
     private void Update()
     {
-        GrowTree(gameObject);
+        Growing();
     }
 
-    private void Addbranches()
+    public void StartGrowing()
     {
-        var test = Instantiate(gameObject, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z + 2), Quaternion.identity);
+        isGrowing = true;
     }
 
-    private void GrowTree(GameObject gameObject)
+    private void Growing()
     {
-        if (Input.GetKey(KeyCode.G) && !hasGrown)
+        if (isGrowing)
         {
-            hasGrown = true;
-        }
-        if (hasGrown)
-        {
-            elapsedTime += Time.deltaTime;
             float complete = elapsedTime / duration;
+            elapsedTime += Time.deltaTime;
 
             transform.localScale = Vector3.Lerp(startScale, endScale, complete);
 
@@ -43,8 +41,9 @@ public class Grow : MonoBehaviour
                 startScale = endScale;
                 endScale *= 10;
                 elapsedTime = 0;
-                hasGrown = false;
-                Addbranches();
+                isGrowing = false;
+
+                doneGrowing?.Invoke();
             }
         }
     }
