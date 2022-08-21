@@ -7,6 +7,9 @@ public class Pot : MonoBehaviour {
     public bool isFilled = true;
 
     [SerializeField] private Transform tWater;
+    [SerializeField] Transform[] potPoints;
+
+    public int pointIndex = 0;
 
     private void Awake() {
         instance = this;
@@ -18,5 +21,10 @@ public class Pot : MonoBehaviour {
 
     public void Empty() {
         tWater.gameObject.SetActive(false);
+    }
+
+    public void MoveToNextPoint() {
+        pointIndex++;
+        transform.position = potPoints[pointIndex].position;
     }
 }
