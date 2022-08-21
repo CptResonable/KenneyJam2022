@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7377428007752816434}
   - component: {fileID: 4721202764121580536}
   - component: {fileID: 2653417725892591639}
+  - component: {fileID: -4948932720867222946}
   m_Layer: 0
   m_Name: Branch
   m_TagString: Untagged
@@ -99,4 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrowing: 0
   startScale: {x: 0, y: 0, z: 0}
-  endScale: {x: 0.1, y: 0.1, z: 0.1}
+  endScale: {x: 0.5, y: 0.5, z: 0.5}
+--- !u!64 &-4948932720867222946
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522875367645020717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4204025313595810674, guid: 10e92501f09a10244bc77b7b40663cef, type: 3}
