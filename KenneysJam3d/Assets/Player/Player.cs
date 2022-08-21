@@ -32,11 +32,13 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-        else {
+        else if (Vector3.Distance(Tree.instance.growPoints[Tree.instance.level].position, transform.position) < 4) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 StartCoroutine(BowCorutine());
+                carryingPot = false;
             }
         }
+
     }
 
     private IEnumerator BowCorutine() {
@@ -47,5 +49,7 @@ public class Player : MonoBehaviour {
             tBowBone.localRotation = Quaternion.Euler(0, 80 * bowCurve.Evaluate(f), 0);
             yield return null;
         }
+
+        Pot.instance.MoveToNextPoint();
     }
 }

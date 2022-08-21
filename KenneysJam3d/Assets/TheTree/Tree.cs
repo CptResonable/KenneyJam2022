@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
+    public static Tree instance;
+
+    public Transform[] growPoints;
+
     [SerializeField]
     private BranchSpawner[] branchSpawners;
 
-    private int level = 0;
+    public int level = 0;
 
     private Grow grow;
 
     // Start is called before the first frame update
     private void Start()
     {
+        instance = this;
         grow = GetComponent<Grow>();
         grow.doneGrowing += SpawnTreeBranch;
     }
